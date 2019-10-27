@@ -2,9 +2,13 @@ import React from 'react';
 import UserConsumer from '../context/user';
 import axios from 'axios';
 import { Link } from "react-router-dom";
+import Global from '../Global';
 
 
 export default class AdvDetail extends React.Component {
+
+    API_URL = Global.url;
+
     static contextType = UserConsumer;
     constructor(props) {
         super(props);
@@ -23,8 +27,7 @@ export default class AdvDetail extends React.Component {
 
     getAds = () => {
         const id = this.props.match.params.id;
-        const API_URL = 'http://localhost:3001/';
-        const endPoint = `${API_URL}apiv1/anuncios/${id}`;
+        const endPoint = `${this.API_URL}apiv1/anuncios/${id}`;
         axios.get(endPoint)
             .then(res => this.setState({
                 article: res.data.result
@@ -42,22 +45,17 @@ export default class AdvDetail extends React.Component {
       }
 
     render() {
-        // const { movie, imageBaseURL, loading } = this.state;
-        const API_URL = 'http://localhost:3001/';
         const { article } = this.state;
         return (
             <React.Fragment>
-                {/* <Navbar showSearch={false}/> */}
-                {/* {loading 
-              ? <Loading text='Loading Advert Detail'/> */}
                 <div key={article._id} className="movie-detail-container">
                     <div className="movie-card-container">
                         <div className="image-container">
-                            <div className="bg-image" style={{ backgroundImage: `url(${API_URL}${article.photo})` }} />
+                            <div className="bg-image" style={{ backgroundImage: `url(${this.API_URL}${article.photo})` }} />
                         </div>
                         <div className="card-image">
                         <figure className="image is-4by3">
-                            <img src={article.photo ? `${API_URL}${article.photo}` : 'https://bulma.io/images/placeholders/1280x960.png'} alt="Placeholder" />
+                            <img src={article.photo ? `${this.API_URL}${article.photo}` : 'https://bulma.io/images/placeholders/1280x960.png'} alt="Placeholder" />
                         </figure>
                         </div>
                         <div className="movie-info">

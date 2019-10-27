@@ -30,7 +30,6 @@ export default class Register extends React.Component {
   }
 
   getTags = () => {
-    // const API_URL = 'http://localhost:3001/';
     const endPoint = `${this.API_URL}apiv1/tags`;
     axios.get(endPoint)
       .then(res => this.setState({
@@ -118,12 +117,12 @@ export default class Register extends React.Component {
 
           <div className="field">
             <div className="select">
-              <select name="tag" onChange={this.onChangeField}>{console.log(this.state.tags)}
+              <select name="tag" onChange={this.onChangeField}>
                 {this.state.tags.map(tag => (<option key={tag} >{tag}</option>))}
               </select>
             </div>
           </div>
-          <div className="field is-grouped"> {console.log(this.state.user)}{console.log(this.context)}
+          <div className="field is-grouped">
             <div className="control">
               <button className="button is-link" type='submit'>Submit</button>
             </div>

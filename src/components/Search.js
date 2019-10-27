@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import UserConsumer from "../context/user";
+import Global from '../Global';
 
 class Search extends Component {
+
+    API_URL = Global.url;
 
     static contextType = UserConsumer;
 
@@ -13,7 +16,6 @@ class Search extends Component {
         status: null
     }
 
-    API_URL = 'http://localhost:3001/';
 
     adSearched = this.props.match.params.search;
 
@@ -78,7 +80,7 @@ class Search extends Component {
                                         <div>{adv.tags && adv.tags.map(tag => <span className="tag is-light" key={tag}>{tag}</span>)}</div>
                                         <br></br>
                                         <div>
-                                        <Link to={`/detail/${adv._id}`} className="button is-primary is-rounded">read more...</Link>
+                                            <Link to={`/detail/${adv._id}`} className="button is-primary is-rounded">read more...</Link>
                                         </div>
                                     </article>
                                 </div>
@@ -101,6 +103,9 @@ class Search extends Component {
         } else if (this.state.articles.length === 0 && this.state.status === 'success') {
             return (
                 <div>
+                    <div className="buttons">
+                        <Link to={'/api'} className="button is-link is-light">Volver a la Home</Link>
+                    </div>
                     <p>No hay artículos para mostrar</p>
                 </div>
             );

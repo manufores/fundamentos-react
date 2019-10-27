@@ -3,9 +3,11 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 import UserConsumer from "../context/user";
 import SearchForm from "./SearchForm";
-import 'bulma/css/bulma.css';
+import Global from '../Global';
 
 class Apiview extends Component {
+
+  API_URL = Global.url;
 
   static contextType = UserConsumer;
 
@@ -15,7 +17,7 @@ class Apiview extends Component {
     tags: [],
   }
 
-  API_URL = 'http://localhost:3001/';
+  
 
   getTags = () => {
     const endPoint = `${this.API_URL}apiv1/tags`;
@@ -66,15 +68,14 @@ search = () => {
 
 
   render() {
-    const API_URL = 'http://localhost:3001/';
-    var listAdverts = this.state.articles.map((adv) => {
+      var listAdverts = this.state.articles.map((adv) => {
       return (
         <div key={adv._id}>
           <div className="column is-one-quarter-desktop is-half-tablet">
             <div className="card"></div>
             <div className="card-image">
               <figure className="image is-4by3">
-                <img src={!(adv.photo).includes("http") ? `${API_URL}${adv.photo}` : `${adv.photo}`} alt="Placeholder" /> {console.log(adv.photo)}
+                <img src={!(adv.photo).includes("http") ? `${this.API_URL}${adv.photo}` : `${adv.photo}`} alt="Placeholder" />
               </figure>
             </div>
             <div className="card-content">
@@ -86,8 +87,8 @@ search = () => {
                     {adv.tags && adv.tags.map(tag => <span key={tag}>{tag}</span>)}
                   </div>
                 </div>
-                <p>{adv.type}</p>
-                <p>{adv.price}</p>
+                <p>Es del tipo: {adv.type}</p>
+                <p>Precio ={adv.price}</p>
                 <br />
                 <Link to={`/detail/${adv._id}`} className="button is-primary is-rounded">read more...</Link>
                 <br />
