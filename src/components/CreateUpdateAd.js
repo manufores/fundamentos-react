@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import UserConsumer from '../context/user';
+import Global from '../Global';
 
 
 class CreateUpdateAd extends Component {
+
+    API_URL = Global.url;
 
     static contextType = UserConsumer;
     // Creo las referencias
@@ -35,8 +38,8 @@ class CreateUpdateAd extends Component {
     // Función de llamada al backend para traer el anuncio con el id capturado
     getAdvert = () => {
         const id = this.props.match.params.id;
-        const API_URL = 'http://localhost:3001/';
-        const endPoint = `${API_URL}apiv1/anuncios/${id}`;
+
+        const endPoint = `${this.API_URL}apiv1/anuncios/${id}`;
         axios.get(endPoint)
             .then(res => this.setState({
                 advert: res.data.result
@@ -44,8 +47,8 @@ class CreateUpdateAd extends Component {
     }
     // Función  de llamada para setear los tags
     getTags = () => {
-        const API_URL = 'http://localhost:3001/';
-        const endPoint = `${API_URL}apiv1/tags`;
+
+        const endPoint = `${this.API_URL}apiv1/tags`;
         axios.get(endPoint)
             .then(res => this.setState({
                 tags: res.data.results
@@ -80,7 +83,7 @@ class CreateUpdateAd extends Component {
         // Rellenar State con formulario
         this.changeState();
 
-        axios.post('http://localhost:3001/apiv1/anuncios', this.state.advert)
+        axios.post(this.API_URL + 'apiv1/anuncios', this.state.advert)
             .then(res => {
                 if (res.data.result) {
                     this.setState({
@@ -101,7 +104,7 @@ class CreateUpdateAd extends Component {
         // Rellenar State con formulario
         this.changeState();
 
-        axios.put('http://localhost:3001/apiv1/anuncios/' + this.advertId, this.state.advert)
+        axios.put(this.API_URL + 'apiv1/anuncios/' + this.advertId, this.state.advert)
             .then(res => {
                 if (res.data.result) {
                     this.setState({
@@ -164,34 +167,25 @@ class CreateUpdateAd extends Component {
                                     </div>
                                 </div>
 
-                                <div className="control">
-                                <label className="label">¿Buy or Sell? Artículo</label>
-                                <p>Actualmente este artículo es del tipo</p> <span className="tag is-primary" >{advert.type}</span>
+                                <div className="field">
+                                    <label className="label">¿Buy or Sell? Artículo</label>
+                                    
                                     <div className="select">
-                                        
-                                        <select ref={this.typeRef}  onChange={this.changeState}>
-                                            <option>buy</option>
-                                            <option>sell</option>
+
+                                        <select ref={this.typeRef} value={advert.type} onChange={this.changeState}>
+                                            <option value="buy">buy</option>
+                                            <option value="sell">sell</option>
                                         </select>
                                     </div>
                                 </div>
 
                                 <div className="field">
-                                    {/* <label className="label">¿Buy or Sell? Artículo</label>
-                                    <div className="control">
-                                        <input type="text" name="title" defaultValue={advert.type} className="input" placeholder="Si compras pon Buy y si vendes pon Sell" />
-                                    </div> */}
-
-                                    <div className="field">
-                                        <label className="label">Tag del Artículo</label>
-                                        <div className="control">
-                                            <input type="text" name="title" defaultValue={advert.tags} className="input" placeholder="" ref={this.tagsRef} />
-                                        </div>
-                                        <div className="select">
-                                            <select defaultValue={advert.tags} ref={this.tagsRef} onChange={this.changeState}>
-                                                {this.state.tags.map(tag => (<option key={tag}>{tag}</option>))}
-                                            </select>
-                                        </div>
+                                    <label className="label">Tag del Artículo</label>
+                                        
+                                    <div className="select">
+                                        <select value={advert.tags} ref={this.tagsRef} onChange={this.changeState}>
+                                            {this.state.tags.map(tag => (<option value={tag} key={tag}>{tag}</option>))}
+                                        </select>
                                     </div>
                                 </div>
 
@@ -235,8 +229,17 @@ class CreateUpdateAd extends Component {
 
                                 <div className="field">
                                     <label className="label">¿Buy or Sell? Artículo</label>
-                                    <div className="control">
+                                    {/* <div className="control">
                                         <input type="text" name="title" className="input" placeholder="Si compras pon Buy y si vendes pon Sell" ref={this.typeRef} onChange={this.changeState} />
+                                    </div> */}
+
+
+                                    <div className="select">
+
+                                        <select ref={this.typeRef} onChange={this.changeState}>
+                                            <option value="buy">buy</option>
+                                            <option value="sell">sell</option>
+                                        </select>
                                     </div>
 
                                     <div className="field">

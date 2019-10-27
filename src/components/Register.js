@@ -2,8 +2,11 @@ import React from "react";
 import UserConsumer from "../context/user";
 import { saveUser } from '../utils/storage';
 import axios from 'axios';
+import Global from '../Global';
 
 export default class Register extends React.Component {
+
+  API_URL = Global.url;
 
   static contextType = UserConsumer;
 
@@ -27,8 +30,8 @@ export default class Register extends React.Component {
   }
 
   getTags = () => {
-    const API_URL = 'http://localhost:3001/';
-    const endPoint = `${API_URL}apiv1/tags`;
+    // const API_URL = 'http://localhost:3001/';
+    const endPoint = `${this.API_URL}apiv1/tags`;
     axios.get(endPoint)
       .then(res => this.setState({
         tags: res.data.results,

@@ -2,8 +2,11 @@ import React, { Component } from "react";
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import UserConsumer from "../context/user";
+import Global from '../Global';
 
 class SearchForm extends Component {
+
+    API_URL = Global.url;
 
     static contextType = UserConsumer;
 
@@ -28,8 +31,8 @@ class SearchForm extends Component {
     }
 
     getTags = () => {
-        const API_URL = 'http://localhost:3001/';
-        const endPoint = `${API_URL}apiv1/tags`;
+        // const API_URL = 'http://localhost:3001/';
+        const endPoint = `${this.API_URL}apiv1/tags`;
         axios.get(endPoint)
             .then(res => this.setState({
                 tags: res.data.results,
