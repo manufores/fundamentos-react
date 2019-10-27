@@ -89,7 +89,7 @@ search = () => {
                 <p>{adv.type}</p>
                 <p>{adv.price}</p>
                 <br />
-                <Link to={`/detail/${adv._id}`}>read more...</Link>
+                <Link to={`/detail/${adv._id}`} className="button is-primary is-rounded">read more...</Link>
                 <br />
               </div>
             </div>

@@ -166,7 +166,7 @@ class CreateUpdateAd extends Component {
 
                                 <div className="control">
                                 <label className="label">¿Buy or Sell? Artículo</label>
-                                <p>Actualmente este artículo es del tipo</p> <span class="tag is-primary" >{advert.type}</span>
+                                <p>Actualmente este artículo es del tipo</p> <span className="tag is-primary" >{advert.type}</span>
                                     <div className="select">
                                         
                                         <select ref={this.typeRef}  onChange={this.changeState}>

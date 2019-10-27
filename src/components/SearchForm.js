@@ -56,10 +56,10 @@ class SearchForm extends Component {
             this.chainsearch = this.chainsearch.concat(this.query[0], this.nameRef.current.value);
         }
         if (this.priceRef.current.value !== "") {
-            if (this.nameRef.current.value === "") {
-                this.chainsearch = this.chainsearch.concat(this.query[1], this.priceRef.current.value);
-            } else {
+            if (this.chainsearch.length > 0) {
                 this.chainsearch = this.chainsearch.concat(this.query[4], this.query[1], this.priceRef.current.value);
+            } else {
+                this.chainsearch = this.chainsearch.concat(this.query[1], this.priceRef.current.value);
             }
         }
         if (this.typeRef.current.value !== "Todo") {
@@ -91,11 +91,6 @@ class SearchForm extends Component {
         }
     }
 
-    // tagHandler = () => {
-    //     this.setState({
-    //         newTags: this.state.tags.unshift('Todos')
-    //     })
-    // }
 
 
     render() {

@@ -14,7 +14,7 @@ export default class Register extends React.Component {
       user: {
         name: "",
         surname: "",
-        tag: ""
+        tag: "lifestyle"
       },
       tags: []
     };

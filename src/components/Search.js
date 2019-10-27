@@ -75,8 +75,11 @@ class Search extends Component {
                                         <p className="subtitle">{adv.description.substring(0, 150)}</p>
                                         <p className="subtitle">{adv.type}</p>
                                         <p className="subtitle">{adv.price}</p>
-                                        <span className="tag is-info">{adv.tags && adv.tags.map(tag => <span key={tag}>{tag}</span>)}</span>
-                                        <Link to={`/detail/${adv._id}`}>read more...</Link>
+                                        <div>{adv.tags && adv.tags.map(tag => <span className="tag is-light" key={tag}>{tag}</span>)}</div>
+                                        <br></br>
+                                        <div>
+                                        <Link to={`/detail/${adv._id}`} className="button is-primary is-rounded">read more...</Link>
+                                        </div>
                                     </article>
                                 </div>
                             </div>
@@ -89,9 +92,6 @@ class Search extends Component {
 
                 <div>
 
-                    <div>
-                        <Link to={'/creaupdate'} className="button is-primary is-rounded">Create new advert</Link>
-                    </div>
                     <div className="buttons">
                         <Link to={'/api'} className="button is-link is-light">Volver a la Home</Link>
                     </div>
