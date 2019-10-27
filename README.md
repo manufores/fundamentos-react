@@ -1,68 +1,38 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Práctica de fundamentos de React
 
-## Available Scripts
+## Funcionalidades:
 
-In the project directory, you can run:
+Esta práctica consta de una aplicación web en la que, a través de un formulario inicial, se accede a anuncios según el tag seleccionado en el registro.
+En la home de los anuncios filtrados por tag hay un buscador, el cual permite buscar por los campos que la api nos facilita para tal efecto, pudiéndose buscar por nombre, precio*, si es un artículo que se vende o no y, por tag. Cuando se emite una búsqueda, el resultado que se ofrece es de todos los anuncios que cumplan los criterios de búsqueda.
+
+En la home, también se dispone de un botón para crear más anuncios. El cual nos llevará a un formulario para su creación.
+
+En cada anuncio, hay un botón `read more..` que nos llevará a la ficha del anuncio.
+En dicha ficha hay un botón que nos permite editar y actualizar el anuncio.
+Cuando se accede a la sección de editar y actualizar, se cargan los valores de cada campo que se quieran cambiar.
+
+*En cuanto a la búsqueda por precio, los valores que se admiten son: 
+- -Valor
+> Este formato busca los precios inferiores o iguales a Valor
+- Valor-
+> Este formato busca los precios superiores o iguales a Valor
+- Valor-Valor
+> Este formato busca los precios entre el rago de valores.
+
+## Especificaciones:
+
+Esta aplicación dispone de un controlador de contexto, el cual permite que, si no se ha accedido previamente al registro, no premitirá navegar por las diferentes rutas de la aplicación.
+
+También está implementado el control de errores `Error Boundary`, mediante el cual se puede controlar los errores propios de la aplicación. Los errores de conexión a la API no son controlables a través del `Error Boundary`.
+
+
+## Modo de arrancar la aplicación:
+
+En el directorio del proyecto, se puede:
 
 ### `npm start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Se arrancará en modo de desarrollo<br />
+Abrir [http://localhost:3000](http://localhost:3000) para verla en el navegador.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+La página se recarga automáticamente cuando se edita y se guarda el código.
