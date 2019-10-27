@@ -4,20 +4,6 @@
     box-sizing: border-box;
 }
 
-/* body {
-    background-color: #eee;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-family: Lato;
-    margin-bottom: 100px;
-} */
-
-/* #app {
-    width: 100%;
-    max-width: 768px;
-}  */
 
 .movie-detail-container {
     margin-right: 0.5rem;
